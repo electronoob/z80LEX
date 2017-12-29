@@ -24,6 +24,7 @@ Num2:
 	jr	c,Num2
 	sbc	hl,bc
 
-	ld	(de),a
+	ld	[de],a
 	inc	de
 	ret
+
