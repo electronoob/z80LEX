@@ -55,13 +55,11 @@ unsigned char * import_file(char * file)
 
 	void showhelp() {
 		printf("example:\n");
-		printf("\t./crusher --input mysing.raw --alsa\n");
-		printf("\t./crusher --input mysing.raw --arduino --bitrate 10 > arduino_sketch.c\n");
-		printf("\t./crusher --input mysing.raw --alsa --bitrate 2\n\n");
+		printf("\t./a.out --input z80.asm\n");
 	}
 	void showabout() {
                 //printf("beverly-crusher (build %d) [http://electronoob.com]\n\n",BUILDNUMBER);
-                printf("Released under the terms of the MIT license.\nCopyright (c) 2014 electronoob.\nAll rights reserved.\n\n");
+                printf("Released under the terms of the MIT license.\nCopyright (c) 2018 electronoob.\nAll rights reserved.\n\n");
 	}
 
 int main (int argc, char *argv[])
@@ -103,7 +101,7 @@ int main (int argc, char *argv[])
 	} else 
 	{
 		rawData = import_file(src_filename_buffer);
-		printf("cocks\n");
+		printf("cocks\n%c\n", rawData[0]);
 	}
 	free(src_filename_buffer);
 	free(rawData);	
