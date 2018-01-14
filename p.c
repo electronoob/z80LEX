@@ -101,10 +101,12 @@ int main (int argc, char *argv[])
 	} else 
 	{
 		rawData = import_file(src_filename_buffer);
+		//
 		printf("cocks\n%c\n", rawData[0]);
 	}
 	free(src_filename_buffer);
 	free(rawData);	
 	return 0;
 }
+
 
