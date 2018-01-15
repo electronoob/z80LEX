@@ -874,7 +874,7 @@ uint8_t tetris[] = {0xC3, 0x0C, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC3, 0x0C, 
 
   unsigned int i = 0;
   unsigned int skip = 0;
-  for(i=0;i<64;i++)
+  for(i=0;i<16;i++)
   {
     node op = opcode[tetris[0x150+i]];
     skip = op.len-1;

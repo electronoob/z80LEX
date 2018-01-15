@@ -694,28 +694,213 @@ node cb[] = {
     printf("%s\n", label_tbl[i]);
   }
   */
-
-  	
+	
 	free(src_filename_buffer);
 	free(rawData);	
 	return 0;
 }
 
 
+
+
+
+int cpu_nop (char *p0)
+{
+	printf("TODO nop ... %s \n", p0);
+	return 0;
+}
+int cpu_ld (char *p0, char *p1, char *p2)
+{
+	printf("TODO ld ... %s %s %s \n", p0, p1, p2);
+	return 0;
+}
+int cpu_inc (char *p0)
+{
+	printf("TODO inc ... %s \n", p0);
+	return 0;
+}
+int cpu_dec (char *p0)
+{
+	printf("TODO dec ... %s \n", p0);
+	return 0;
+}
+int cpu_rlca (char *p0)
+{
+	printf("TODO rlca ... %s \n", p0);
+	return 0;
+}
+int cpu_add (char *p0, char *p1)
+{
+	printf("TODO add ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_rrca (char *p0)
+{
+	printf("TODO rrca ... %s \n", p0);
+	return 0;
+}
+int cpu_stop (char *p0, char *p1)
+{
+	printf("TODO stop ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_rla (char *p0)
+{
+	printf("TODO rla ... %s \n", p0);
+	return 0;
+}
+int cpu_jr (char *p0, char *p1)
+{
+	printf("TODO jr ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_rra (char *p0)
+{
+	printf("TODO rra ... %s \n", p0);
+	return 0;
+}
+int cpu_daa (char *p0)
+{
+	printf("TODO daa ... %s \n", p0);
+	return 0;
+}
+int cpu_cpl (char *p0)
+{
+	printf("TODO cpl ... %s \n", p0);
+	return 0;
+}
+int cpu_scf (char *p0)
+{
+	printf("TODO scf ... %s \n", p0);
+	return 0;
+}
+int cpu_ccf (char *p0)
+{
+	printf("TODO ccf ... %s \n", p0);
+	return 0;
+}
+int cpu_halt (char *p0)
+{
+	printf("TODO halt ... %s \n", p0);
+	return 0;
+}
+int cpu_adc (char *p0, char *p1)
+{
+	printf("TODO adc ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_sub (char *p0, char *p1)
+{
+	printf("TODO sub ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_sbc (char *p0, char *p1)
+{
+	printf("TODO sbc ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_and (char *p0, char *p1)
+{
+	printf("TODO and ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_xor (char *p0, char *p1)
+{
+	printf("TODO xor ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_or (char *p0, char *p1)
+{
+	printf("TODO or ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_cp (char *p0, char *p1)
+{
+	printf("TODO cp ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_ret (char *p0)
+{
+	printf("TODO ret ... %s \n", p0);
+	return 0;
+}
+int cpu_pop (char *p0)
+{
+	printf("TODO pop ... %s \n", p0);
+	return 0;
+}
+int cpu_jp (char *p0, char *p1, char *p2)
+{
+	printf("TODO jp ... %s %s %s \n", p0, p1, p2);
+	return 0;
+}
+int cpu_call (char *p0, char *p1, char *p2)
+{
+	printf("TODO call ... %s %s %s \n", p0, p1, p2);
+	return 0;
+}
+int cpu_push (char *p0)
+{
+	printf("TODO push ... %s \n", p0);
+	return 0;
+}
+int cpu_rst (char *p0)
+{
+	printf("TODO rst ... %s \n", p0);
+	return 0;
+}
+int cpu_prefix (char *p0)
+{
+	printf("TODO prefix ... %s \n", p0);
+	return 0;
+}
+int cpu_reti (char *p0)
+{
+	printf("TODO reti ... %s \n", p0);
+	return 0;
+}
+int cpu_ldh (char *p0, char *p1)
+{
+	printf("TODO ldh ... %s %s \n", p0, p1);
+	return 0;
+}
+int cpu_di (char *p0)
+{
+	printf("TODO di ... %s \n", p0);
+	return 0;
+}
+int cpu_ei (char *p0)
+{
+	printf("TODO ei ... %s \n", p0);
+	return 0;
+}
+
+
+
+
+
+
+
 char *process(char *line)
 {
   char *tokens;
   char *saveptr2;
+  char *saveptr3;
   const char s[3] = "\t ";
 
-  tokens = strtok_r(line, s, &saveptr2);
+
+  char *line_cache = malloc(strlen(line)+1);
+  memset(line_cache, 0, strlen(line)+1);
+  memcpy(line_cache, line, strlen(line));
+//printf("A: line[%d] line_cache[%d]\n", strlen(line),strlen(line_cache));
+  tokens = strtok_r(line_cache, s, &saveptr2);
   size_t t1len = strlen(tokens);
   char ch = tokens[t1len-1];
 
-  printf("[");
+  //printf("[");
   if(ch == ':')
   {
-    printf("%s", tokens);
+    //printf("%s\n", tokens);
     label_tbl[label_tbl_n] = malloc(t1len);
     memset(label_tbl[label_tbl_n], 0, t1len);
     memcpy(label_tbl[label_tbl_n],
@@ -727,58 +912,81 @@ char *process(char *line)
 	  ch = tokens[0];
 	  if(ch == ';')
 	  {
-		  printf("comment");
+		  //printf("comment");
+		  return 0;
 	  }
 
   }
 
-  // 33 instructions --- the 34th instruction is PREFIX CB
-  if (strcmp("nop", tokens) == 0)  printf("TODO nop");
-  if (strcmp("ld", tokens) == 0)  printf("TODO ld");
-  if (strcmp("inc", tokens) == 0)  printf("TODO inc");
-  if (strcmp("dec", tokens) == 0)  printf("TODO dec");
-  if (strcmp("rlca", tokens) == 0)  printf("TODO rlca");
-  if (strcmp("add", tokens) == 0)  printf("TODO add");
-  if (strcmp("rrca", tokens) == 0)  printf("TODO rrca");
-  //if (strcmp("stop", tokens) == 0)  printf("TODO stop");
-  if (strcmp("rla", tokens) == 0)  printf("TODO rla");
-  if (strcmp("jr", tokens) == 0)  printf("TODO jr");
-  if (strcmp("rra", tokens) == 0)  printf("TODO rra");
-  if (strcmp("daa", tokens) == 0)  printf("TODO daa");
-  if (strcmp("cpl", tokens) == 0)  printf("TODO cpl");
-  if (strcmp("scf", tokens) == 0)  printf("TODO scf");
-  if (strcmp("ccf", tokens) == 0)  printf("TODO ccf");
-  //if (strcmp("halt", tokens) == 0)  printf("TODO halt");
-  if (strcmp("adc", tokens) == 0)  printf("TODO adc");
-  if (strcmp("sub", tokens) == 0)  printf("TODO sub");
-  if (strcmp("sbc", tokens) == 0)  printf("TODO sbc");
-  if (strcmp("and", tokens) == 0)  printf("TODO and");
-  if (strcmp("xor", tokens) == 0)  printf("TODO xor");
-  if (strcmp("or", tokens) == 0)  printf("TODO or");
-  if (strcmp("cp", tokens) == 0)  printf("TODO cp");
-  if (strcmp("ret", tokens) == 0)  printf("TODO ret");
-  if (strcmp("pop", tokens) == 0)  printf("TODO pop");
-  if (strcmp("jp", tokens) == 0)  printf("TODO jp");
-  if (strcmp("call", tokens) == 0)  printf("TODO call");
-  if (strcmp("push", tokens) == 0)  printf("TODO push");
-  if (strcmp("rst", tokens) == 0)  printf("TODO rst");
-  //if (strcmp("prefix", tokens) == 0)  printf("TODO prefix");
-  if (strcmp("reti", tokens) == 0)  printf("TODO reti");
-  if (strcmp("ldh", tokens) == 0)  printf("TODO ldh");
-  //if (strcmp("di", tokens) == 0)  printf("TODO di");
-  //if (strcmp("ei", tokens) == 0)  printf("TODO ei");
 
-  /*
+char *command = tokens;
+ // while( tokens != NULL )
+ 
+	    //{
+		        //printf("%s", tokens);
+			//    tokens = strtok_r(NULL, s, &saveptr2);
+			//
+const char s3[2] = ",";
+memset(line_cache, 0, strlen(line));
+memcpy(line_cache, line, strlen(line));
+//printf("B: line[%d] line_cache[%d]\n", strlen(line),strlen(line_cache));
+if(strcmp(line,line_cache) == 0) 
+{
+	//printf("line and line cache match content");
+}
+char *p0 = strtok_r(line_cache, s3, &saveptr3);
+char *p1 = strtok_r(NULL, s3, &saveptr3);
+char *p2 = strtok_r(NULL, s3, &saveptr3);
+
+printf("c:'%s' p0:'%s' p1:'%s' p2:'%s'\n", command, p0,p1,p2);
+return;
+if (strcmp("nop",	command) == 0)	cpu_nop(p0);
+if (strcmp("ld",	command) == 0)	cpu_ld(p0,p1,p2);
+if (strcmp("inc",	command) == 0)	cpu_inc(p0);
+if (strcmp("dec",	command) == 0)	cpu_dec(p0);
+if (strcmp("rlca",	command) == 0)	cpu_rlca(p0);
+if (strcmp("add",	command) == 0)	cpu_add(p0,p1);
+if (strcmp("rrca",	command) == 0)	cpu_rrca(p0);
+if (strcmp("stop",	command) == 0)	cpu_stop(p0,p1);
+if (strcmp("rla",	command) == 0)	cpu_rla(p0);
+if (strcmp("jr",	command) == 0)	cpu_jr(p0,p1);
+if (strcmp("rra",	command) == 0)	cpu_rra(p0);
+if (strcmp("daa",	command) == 0)	cpu_daa(p0);
+if (strcmp("cpl",	command) == 0)	cpu_cpl(p0);
+if (strcmp("scf",	command) == 0)	cpu_scf(p0);
+if (strcmp("ccf",	command) == 0)	cpu_ccf(p0);
+if (strcmp("halt",	command) == 0)	cpu_halt(p0);
+if (strcmp("adc",	command) == 0)	cpu_adc(p0,p1);
+if (strcmp("sub",	command) == 0)	cpu_sub(p0,p1);
+if (strcmp("sbc",	command) == 0)	cpu_sbc(p0,p1);
+if (strcmp("and",	command) == 0)	cpu_and(p0,p1);
+if (strcmp("xor",	command) == 0)	cpu_xor(p0,p1);
+if (strcmp("or",	command) == 0)	cpu_or(p0,p1);
+if (strcmp("cp",	command) == 0)	cpu_cp(p0,p1);
+if (strcmp("ret",	command) == 0)	cpu_ret(p0);
+if (strcmp("pop",	command) == 0)	cpu_pop(p0);
+if (strcmp("jp",	command) == 0)	cpu_jp(p0,p1,p2);
+if (strcmp("call",	command) == 0)	cpu_call(p0,p1,p2);
+if (strcmp("push",	command) == 0)	cpu_push(p0);
+if (strcmp("rst",	command) == 0)	cpu_rst(p0);
+if (strcmp("prefix",	command) == 0)	cpu_prefix(p0);
+if (strcmp("reti",	command) == 0)	cpu_reti(p0);
+if (strcmp("ldh",	command) == 0)	cpu_ldh(p0,p1);
+if (strcmp("di",	command) == 0)	cpu_di(p0);
+if (strcmp("ei",	command) == 0)	cpu_ei(p0);
+
+/*
+
   while( tokens != NULL )
   {
-    printf("%s", tokens);
+    //printf("%s", tokens);
     tokens = strtok_r(NULL, s, &saveptr2);
-    if(tokens != NULL) printf(",");
+    //if(tokens != NULL) printf(",");
   }
-  */
-  printf("]\n");
+  
+  //printf("]\n");
 
-
+*/
   return line;
 }
 
