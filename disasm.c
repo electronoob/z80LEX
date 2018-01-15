@@ -3,14 +3,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-
 struct nodeStruct
 {
   char mnemonic[32];
-  char flagZ;
-  char flagN;
-  char flagH;
-  char flagC;
+  char flagZ[2];
+  char flagN[2];
+  char flagH[2];
+  char flagC[2];
   uint8_t len;
   uint8_t cyclesTaken;
   uint8_t cyclesNotTaken;
@@ -234,7 +233,7 @@ node opcode[] = {
   {"RET NC","-","-","-","-",1,20,8,0xD0},
   {"POP DE","-","-","-","-",1,12,12,0xD1},
   {"JP NC,a16","-","-","-","-",3,16,12,0xD2},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xD3},
+  {"invalid","","u","u","u",0,0,0,0xD3},
   {"CALL NC,a16","-","-","-","-",3,24,12,0xD4},
   {"PUSH DE","-","-","-","-",1,16,16,0xD5},
   {"SUB d8","Z","1","H","C",2,8,8,0xD6},
@@ -242,32 +241,32 @@ node opcode[] = {
   {"RET C","-","-","-","-",1,20,8,0xD8},
   {"RETI","-","-","-","-",1,16,16,0xD9},
   {"JP C,a16","-","-","-","-",3,16,12,0xDA},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xDB},
+  {"invalid","","u","u","u",0,0,0,0xDB},
   {"CALL C,a16","-","-","-","-",3,24,12,0xDC},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xDD},
+  {"invalid","","u","u","u",0,0,0,0xDD},
   {"SBC A,d8","Z","1","H","C",2,8,8,0xDE},
   {"RST 18H","-","-","-","-",1,16,16,0xDF},
   {"LDH (a8),A","-","-","-","-",2,12,12,0xE0},
   {"POP HL","-","-","-","-",1,12,12,0xE1},
   {"LD (C),A","-","-","-","-",2,8,8,0xE2},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xE3},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xE4},
+  {"invalid","","u","u","u",0,0,0,0xE3},
+  {"invalid","","u","u","u",0,0,0,0xE4},
   {"PUSH HL","-","-","-","-",1,16,16,0xE5},
   {"AND d8","Z","0","1","0",2,8,8,0xE6},
   {"RST 20H","-","-","-","-",1,16,16,0xE7},
   {"ADD SP,r8","0","0","H","C",2,16,16,0xE8},
   {"JP (HL)","-","-","-","-",1,4,4,0xE9},
   {"LD (a16),A","-","-","-","-",3,16,16,0xEA},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xEB},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xEC},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xED},
+  {"invalid","","u","u","u",0,0,0,0xEB},
+  {"invalid","","u","u","u",0,0,0,0xEC},
+  {"invalid","","u","u","u",0,0,0,0xED},
   {"XOR d8","Z","0","0","0",2,8,8,0xEE},
   {"RST 28H","-","-","-","-",1,16,16,0xEF},
   {"LDH A,(a8)","-","-","-","-",2,12,12,0xF0},
   {"POP AF","Z","N","H","C",1,12,12,0xF1},
   {"LD A,(C)","-","-","-","-",2,8,8,0xF2},
   {"DI","-","-","-","-",1,4,4,0xF3},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xF4},
+  {"invalid","","u","u","u",0,0,0,0xF4},
   {"PUSH AF","-","-","-","-",1,16,16,0xF5},
   {"OR d8","Z","0","0","0",2,8,8,0xF6},
   {"RST 30H","-","-","-","-",1,16,16,0xF7},
@@ -275,8 +274,8 @@ node opcode[] = {
   {"LD SP,HL","-","-","-","-",1,8,8,0xF9},
   {"LD A,(a16)","-","-","-","-",3,16,16,0xFA},
   {"EI","-","-","-","-",1,4,4,0xFB},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xFC},
-  {"undefined","","undefined","undefined","undefined",0,0,0,0xFD},
+  {"invalid","","u","u","u",0,0,0,0xFC},
+  {"invalid","","u","u","u",0,0,0,0xFD},
   {"CP d8","Z","1","H","C",2,8,8,0xFE},
   {"RST 38H","-","-","-","-",1,16,16,0xFF}
 };
