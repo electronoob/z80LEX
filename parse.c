@@ -702,181 +702,176 @@ node cb[] = {
 
 
 
-
-
 int cpu_nop (char *p0)
 {
-	printf("TODO nop ... %s \n", p0);
+	printf("nop %s\n", p0);
 	return 0;
 }
 int cpu_ld (char *p0, char *p1, char *p2)
 {
-	printf("TODO ld ... %s %s %s \n", p0, p1, p2);
+	printf("ld %s, %s, %s\n", p0, p1, p2);
 	return 0;
 }
 int cpu_inc (char *p0)
 {
-	printf("TODO inc ... %s \n", p0);
+	printf("inc %s\n", p0);
 	return 0;
 }
 int cpu_dec (char *p0)
 {
-	printf("TODO dec ... %s \n", p0);
+	printf("dec %s\n", p0);
 	return 0;
 }
 int cpu_rlca (char *p0)
 {
-	printf("TODO rlca ... %s \n", p0);
+	printf("rlca %s\n", p0);
 	return 0;
 }
 int cpu_add (char *p0, char *p1)
 {
-	printf("TODO add ... %s %s \n", p0, p1);
+	printf("add %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_rrca (char *p0)
 {
-	printf("TODO rrca ... %s \n", p0);
+	printf("rrca %s\n", p0);
 	return 0;
 }
 int cpu_stop (char *p0, char *p1)
 {
-	printf("TODO stop ... %s %s \n", p0, p1);
+	printf("stop %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_rla (char *p0)
 {
-	printf("TODO rla ... %s \n", p0);
+	printf("rla %s\n", p0);
 	return 0;
 }
 int cpu_jr (char *p0, char *p1)
 {
-	printf("TODO jr ... %s %s \n", p0, p1);
+	printf("jr %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_rra (char *p0)
 {
-	printf("TODO rra ... %s \n", p0);
+	printf("rra %s\n", p0);
 	return 0;
 }
 int cpu_daa (char *p0)
 {
-	printf("TODO daa ... %s \n", p0);
+	printf("daa %s\n", p0);
 	return 0;
 }
 int cpu_cpl (char *p0)
 {
-	printf("TODO cpl ... %s \n", p0);
+	printf("cpl %s\n", p0);
 	return 0;
 }
 int cpu_scf (char *p0)
 {
-	printf("TODO scf ... %s \n", p0);
+	printf("scf %s\n", p0);
 	return 0;
 }
 int cpu_ccf (char *p0)
 {
-	printf("TODO ccf ... %s \n", p0);
+	printf("ccf %s\n", p0);
 	return 0;
 }
 int cpu_halt (char *p0)
 {
-	printf("TODO halt ... %s \n", p0);
+	printf("halt %s\n", p0);
 	return 0;
 }
 int cpu_adc (char *p0, char *p1)
 {
-	printf("TODO adc ... %s %s \n", p0, p1);
+	printf("adc %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_sub (char *p0, char *p1)
 {
-	printf("TODO sub ... %s %s \n", p0, p1);
+	printf("sub %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_sbc (char *p0, char *p1)
 {
-	printf("TODO sbc ... %s %s \n", p0, p1);
+	printf("sbc %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_and (char *p0, char *p1)
 {
-	printf("TODO and ... %s %s \n", p0, p1);
+	printf("and %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_xor (char *p0, char *p1)
 {
-	printf("TODO xor ... %s %s \n", p0, p1);
+	printf("xor %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_or (char *p0, char *p1)
 {
-	printf("TODO or ... %s %s \n", p0, p1);
+	printf("or %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_cp (char *p0, char *p1)
 {
-	printf("TODO cp ... %s %s \n", p0, p1);
+	printf("cp %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_ret (char *p0)
 {
-	printf("TODO ret ... %s \n", p0);
+	printf("ret %s\n", p0);
 	return 0;
 }
 int cpu_pop (char *p0)
 {
-	printf("TODO pop ... %s \n", p0);
+	printf("pop %s\n", p0);
 	return 0;
 }
 int cpu_jp (char *p0, char *p1, char *p2)
 {
-	printf("TODO jp ... %s %s %s \n", p0, p1, p2);
+	printf("jp %s, %s, %s\n", p0, p1, p2);
 	return 0;
 }
 int cpu_call (char *p0, char *p1, char *p2)
 {
-	printf("TODO call ... %s %s %s \n", p0, p1, p2);
+	printf("call %s, %s, %s\n", p0, p1, p2);
 	return 0;
 }
 int cpu_push (char *p0)
 {
-	printf("TODO push ... %s \n", p0);
+	printf("push %s\n", p0);
 	return 0;
 }
 int cpu_rst (char *p0)
 {
-	printf("TODO rst ... %s \n", p0);
+	printf("rst %s\n", p0);
 	return 0;
 }
 int cpu_prefix (char *p0)
 {
-	printf("TODO prefix ... %s \n", p0);
+	printf("prefix %s\n", p0);
 	return 0;
 }
 int cpu_reti (char *p0)
 {
-	printf("TODO reti ... %s \n", p0);
+	printf("reti %s\n", p0);
 	return 0;
 }
 int cpu_ldh (char *p0, char *p1)
 {
-	printf("TODO ldh ... %s %s \n", p0, p1);
+	printf("ldh %s, %s\n", p0, p1);
 	return 0;
 }
 int cpu_di (char *p0)
 {
-	printf("TODO di ... %s \n", p0);
+	printf("di %s\n", p0);
 	return 0;
 }
 int cpu_ei (char *p0)
 {
-	printf("TODO ei ... %s \n", p0);
+	printf("ei %s\n", p0);
 	return 0;
 }
-
-
-
 
 
 
@@ -892,15 +887,19 @@ char *process(char *line)
   char *line_cache = malloc(strlen(line)+1);
   memset(line_cache, 0, strlen(line)+1);
   memcpy(line_cache, line, strlen(line));
-//printf("A: line[%d] line_cache[%d]\n", strlen(line),strlen(line_cache));
+  
   tokens = strtok_r(line_cache, s, &saveptr2);
   size_t t1len = strlen(tokens);
   char ch = tokens[t1len-1];
 
+  char *command = malloc(strlen(tokens)+1);
+  memset(command, 0, strlen(tokens)+1);
+  memcpy(command, tokens, strlen(tokens));
+
   //printf("[");
   if(ch == ':')
   {
-    //printf("%s\n", tokens);
+    printf("%s\n", tokens);
     label_tbl[label_tbl_n] = malloc(t1len);
     memset(label_tbl[label_tbl_n], 0, t1len);
     memcpy(label_tbl[label_tbl_n],
@@ -919,17 +918,10 @@ char *process(char *line)
   }
 
 
-char *command = tokens;
- // while( tokens != NULL )
- 
-	    //{
-		        //printf("%s", tokens);
-			//    tokens = strtok_r(NULL, s, &saveptr2);
-			//
+		//
 const char s3[2] = ",";
 memset(line_cache, 0, strlen(line));
-memcpy(line_cache, line, strlen(line));
-//printf("B: line[%d] line_cache[%d]\n", strlen(line),strlen(line_cache));
+memcpy(line_cache, line+t1len, strlen(line)-t1len);
 if(strcmp(line,line_cache) == 0) 
 {
 	//printf("line and line cache match content");
@@ -938,8 +930,7 @@ char *p0 = strtok_r(line_cache, s3, &saveptr3);
 char *p1 = strtok_r(NULL, s3, &saveptr3);
 char *p2 = strtok_r(NULL, s3, &saveptr3);
 
-printf("c:'%s' p0:'%s' p1:'%s' p2:'%s'\n", command, p0,p1,p2);
-return;
+
 if (strcmp("nop",	command) == 0)	cpu_nop(p0);
 if (strcmp("ld",	command) == 0)	cpu_ld(p0,p1,p2);
 if (strcmp("inc",	command) == 0)	cpu_inc(p0);
@@ -975,18 +966,6 @@ if (strcmp("ldh",	command) == 0)	cpu_ldh(p0,p1);
 if (strcmp("di",	command) == 0)	cpu_di(p0);
 if (strcmp("ei",	command) == 0)	cpu_ei(p0);
 
-/*
-
-  while( tokens != NULL )
-  {
-    //printf("%s", tokens);
-    tokens = strtok_r(NULL, s, &saveptr2);
-    //if(tokens != NULL) printf(",");
-  }
-  
-  //printf("]\n");
-
-*/
   return line;
 }
 
