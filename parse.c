@@ -5,12 +5,58 @@
 
 #define TMPF_BUFFER_SIZE 1024
 
-uint16_t AF = 0;
-uint16_t BC = 0;
-uint16_t DE = 0;
-uint16_t HL = 0;
-uint16_t SP = 0;
-uint16_t PC = 0;
+struct cpu_registers
+{
+	uint16_t SP;
+	uint16_t PC;
+	struct {
+		union {
+			struct {
+				int8_t A;
+				int8_t F;
+			};
+			struct {
+				int16_t AF;
+			};
+		};
+	};
+	struct {
+		union {
+			struct {
+				int8_t B;
+				int8_t C;
+			};
+			struct {
+				int16_t BC;
+			};
+		};
+	};
+	struct {
+		union {
+			struct {
+				int8_t D;
+				int8_t E;
+			};
+			struct {
+				int16_t DE;
+			};
+		};
+	};
+	struct {
+		union {
+			struct {
+				int8_t H;
+				int8_t L;
+			};
+			struct {
+				int16_t HL;
+			};
+		};
+	};
+};
+typedef struct cpu_registers registers;
+
+registers cpureg = {};
 
 struct nodeStruct
 {
@@ -24,6 +70,7 @@ struct nodeStruct
   uint8_t cyclesNotTaken;
   uint8_t hex;
 };
+
 typedef struct nodeStruct node;
 
 char *process(char *line);
@@ -701,15 +748,58 @@ node cb[] = {
 }
 
 
-
-int cpu_nop (char *p0)
+int cpu_nop ()
 {
-	printf("nop %s\n", p0);
+	printf("nop\n");
 	return 0;
 }
 int cpu_ld (char *p0, char *p1, char *p2)
 {
+	long int lp1 = strtol(p1, NULL, 0);
 	printf("ld %s, %s, %s\n", p0, p1, p2);
+
+	if(strcmp(p0, "af") == 0) {
+		cpureg.AF = lp1;
+	}
+	else if(strcmp(p0, "bc") == 0) {
+		cpureg.BC = lp1;
+	}
+	else if(strcmp(p0, "de") == 0) {
+		cpureg.DE = lp1;
+	}
+	else if(strcmp(p0, "hl") == 0) {
+		cpureg.HL = lp1;
+	}
+	else if(strcmp(p0, "a") == 0) {
+		cpureg.A = lp1;
+	}
+	else if(strcmp(p0, "f") == 0) {
+		cpureg.F = lp1;
+	}
+	else if(strcmp(p0, "b") == 0) {
+		cpureg.B = lp1;
+	}
+	else if(strcmp(p0, "c") == 0) {
+		cpureg.C = lp1;
+	}
+	else if(strcmp(p0, "d") == 0) {
+		cpureg.D = lp1;
+	}
+	else if(strcmp(p0, "e") == 0) {
+		cpureg.E = lp1;
+	}
+	else if(strcmp(p0, "h") == 0) {
+		cpureg.H = lp1;
+	}
+	else if(strcmp(p0, "l") == 0) {
+		cpureg.L = lp1;
+	}
+	else
+	{
+		printf("not coded yet\n");
+		return;
+	}
+	printf("\t\t\t\tregs\taf\tbc\tde\thl\n\t\t\t\t\t%i\t%i\t%i\t%i\n", cpureg.AF,  cpureg.BC,  cpureg.DE, cpureg.HL);
 	return 0;
 }
 int cpu_inc (char *p0)
@@ -917,8 +1007,7 @@ char *process(char *line)
 
   }
 
-
-		//
+//
 const char s3[2] = ",";
 memset(line_cache, 0, strlen(line));
 memcpy(line_cache, line+t1len, strlen(line)-t1len);
@@ -931,7 +1020,11 @@ char *p1 = strtok_r(NULL, s3, &saveptr3);
 char *p2 = strtok_r(NULL, s3, &saveptr3);
 
 
-if (strcmp("nop",	command) == 0)	cpu_nop(p0);
+if(p0 != NULL) p0 += 1;
+//if(p1 != NULL) p1 += 1;
+//if(p2 != NULL) p2 += 1;
+
+if (strcmp("nop",	command) == 0)	cpu_nop();
 if (strcmp("ld",	command) == 0)	cpu_ld(p0,p1,p2);
 if (strcmp("inc",	command) == 0)	cpu_inc(p0);
 if (strcmp("dec",	command) == 0)	cpu_dec(p0);
