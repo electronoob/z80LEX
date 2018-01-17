@@ -797,9 +797,9 @@ int cpu_ld (char *p0, char *p1, char *p2)
 	else
 	{
 		printf("not coded yet\n");
-		return;
+		return -1;
 	}
-	printf("\t\t\t\tregs\taf\tbc\tde\thl\n\t\t\t\t\t%i\t%i\t%i\t%i\n", cpureg.AF,  cpureg.BC,  cpureg.DE, cpureg.HL);
+	printf("\t\t\t\tregs\taf\tbc\tde\thl\n\t\t\t\t\t%02hhx %02hhx\t%02hhx %02hhx\t%02hhx %02hhx\t%02hhx %02hhx\n", cpureg.A, cpureg.F, cpureg.B, cpureg.C,  cpureg.D, cpureg.E, cpureg.H, cpureg.L);
 	return 0;
 }
 int cpu_inc (char *p0)
@@ -982,8 +982,8 @@ char *process(char *line)
   size_t t1len = strlen(tokens);
   char ch = tokens[t1len-1];
 
-  char *command = malloc(strlen(tokens)+1);
-  memset(command, 0, strlen(tokens)+1);
+  char *command = malloc(strlen(tokens));
+  memset(command, 0, strlen(tokens));
   memcpy(command, tokens, strlen(tokens));
 
   //printf("[");
@@ -1002,6 +1002,7 @@ char *process(char *line)
 	  if(ch == ';')
 	  {
 		  //printf("comment");
+		  free(command);
 		  return 0;
 	  }
 
@@ -1058,7 +1059,7 @@ if (strcmp("reti",	command) == 0)	cpu_reti(p0);
 if (strcmp("ldh",	command) == 0)	cpu_ldh(p0,p1);
 if (strcmp("di",	command) == 0)	cpu_di(p0);
 if (strcmp("ei",	command) == 0)	cpu_ei(p0);
-
+free(command);
   return line;
 }
 

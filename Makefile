@@ -1,2 +1,5 @@
+
 program:
-	gcc -w ./parse.c && ./a.exe  --input z80.asm
+	gcc ./parse.c && ./a.exe  --input z80.asm
+check:
+	cppcheck --enable=all --inconclusive ./parse.c
