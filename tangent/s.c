@@ -21,7 +21,7 @@ int next(parser this)
 	int ws_len = 3,i,k;
 	uint8_t a, b;
 
-	for(i=p.o; i<string_len;i++)
+	for(i=this.o; i<string_len;i++)
 	{
 		a = string[i];
 		for(k=0; k<ws_len;k++)
@@ -29,7 +29,7 @@ int next(parser this)
 			b = whitespace[k];
 			if(a == b)
 			{
-				p.o = i+1;
+				this.o = i+1;
 				return 1;
 			}
 		}
@@ -42,9 +42,8 @@ int prev(parser this)
 	char whitespace[] = " \t\n";
 	int ws_len = 3,i,k;
 	uint8_t a, b;
-
 	
-	for(i=p.o; i >= 0; i--)
+	for(i=this.o; i >= 0; i--)
 	{
 		a = string[i];
 		for(k=0; k<ws_len;k++)
@@ -52,7 +51,7 @@ int prev(parser this)
 			b = whitespace[k];
 			if(a == b)
 			{
-				p.o = i-1;
+				this.o = i-1;
 				return 1;
 			}
 		}
@@ -71,34 +70,30 @@ int init()
 	p.bookmark = &bookmark;
 	return 0;
 }
-
+#define NEXT p.next(&p);
+#define PREV p.prev(&p);p.prev(&p);p.next(&p);
+#define PRINT printf("[%c]", string[p.o]);
 int main()
 {
 	init();
-	string_len = strlen(string);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
+	string_len = strlen(string);	
 
+	PRINT;NEXT;
+	PRINT;NEXT;
+	PRINT;NEXT;
+	PRINT;NEXT;
+	PRINT;NEXT;
+	PRINT;
 
 	printf("\n");
 
-	printf("[%c]", string[p.o]);
-	p.prev(&p);
-	printf("[%c]", string[p.o]);
-	p.prev(&p);
-	printf("[%c]", string[p.o]);
-	p.prev(&p);
-	printf("[%c]", string[p.o]);
-	p.prev(&p);
-	printf("[%c]", string[p.o]);
-
+	PRINT;PREV;
+	PRINT;PREV;
+	PRINT;PREV;
+	PRINT;PREV;
+	PRINT;PREV;
+	PRINT;PREV;
+			
 	printf("\n");
 	printf("; 16-bit Integer to ASCII (decimal)\n");
 	return 0;
