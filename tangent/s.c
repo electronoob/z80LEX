@@ -43,7 +43,6 @@ int prev(parser this)
 	int ws_len = 3,i,k;
 	uint8_t a, b;
 
-//      ; 16-bit Integer to ASCII (decimal)\n
 	
 	for(i=p.o; i >= 0; i--)
 	{
@@ -100,8 +99,8 @@ int main()
 	p.prev(&p);
 	printf("[%c]", string[p.o]);
 
-
-
+	printf("\n");
+	printf("; 16-bit Integer to ASCII (decimal)\n");
 	return 0;
 }
 
