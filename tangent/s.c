@@ -19,7 +19,7 @@ int next(parser this)
 {
 	char whitespace[] = " \t\n";
 	int ws_len = 3,i,k;
-	uint8_t *a, *b;
+	uint8_t a, b;
 
 	for(i=p.o; i<string_len;i++)
 	{
@@ -32,7 +32,6 @@ int next(parser this)
 				p.o = i+1;
 				return 1;
 			}
-
 		}
 	}
 	return 0;
@@ -60,6 +59,22 @@ int main()
 {
 	init();
 	string_len = strlen(string);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
+	printf("[%c]", string[p.o]);
+	p.next(&p);
 	printf("[%c]", string[p.o]);
 	p.next(&p);
 	printf("[%c]", string[p.o]);
