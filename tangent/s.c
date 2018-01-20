@@ -39,7 +39,25 @@ int next(parser this)
 
 int prev(parser this)
 {
-	printf("prev\n");
+	char whitespace[] = " \t\n";
+	int ws_len = 3,i,k;
+	uint8_t a, b;
+
+//      ; 16-bit Integer to ASCII (decimal)\n
+	
+	for(i=p.o; i >= 0; i--)
+	{
+		a = string[i];
+		for(k=0; k<ws_len;k++)
+		{
+			b = whitespace[k];
+			if(a == b)
+			{
+				p.o = i-1;
+				return 1;
+			}
+		}
+	}
 	return 0;
 }
 int bookmark(parser this)
@@ -68,29 +86,22 @@ int main()
 	printf("[%c]", string[p.o]);
 	p.next(&p);
 	printf("[%c]", string[p.o]);
-	p.next(&p);
+
+
+	printf("\n");
+
 	printf("[%c]", string[p.o]);
-	p.next(&p);
+	p.prev(&p);
 	printf("[%c]", string[p.o]);
-	p.next(&p);
+	p.prev(&p);
 	printf("[%c]", string[p.o]);
-	p.next(&p);
+	p.prev(&p);
 	printf("[%c]", string[p.o]);
-	p.next(&p);
+	p.prev(&p);
 	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
-	printf("[%c]", string[p.o]);
-	p.next(&p);
+
+
+
 	return 0;
 }
 
